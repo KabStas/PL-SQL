@@ -38,11 +38,11 @@ create table kabenyk_st.working_time(
     day varchar2(100) not null,
     begin_time varchar2(5) not null,
     end_time varchar2(5) not null,
-    id_hospital number references kabenyk_st.hospitals (id_hospital) ON DELETE CASCADE
+    id_hospital number references kabenyk_st.hospitals (id_hospital) on delete cascade
 );
 create table kabenyk_st.doctors(
     id_doctor number default kabenyk_st.seq_for_primary_key.nextval primary key,
-    id_hospital number references kabenyk_st.hospitals (id_hospital) ON DELETE CASCADE,
+    id_hospital number references kabenyk_st.hospitals (id_hospital) on delete cascade,
     surname varchar2(100) not null,
     name varchar2(100) not null,
     patronymic varchar2(100) not null,
@@ -64,8 +64,8 @@ create table kabenyk_st.doctors_specializations(
     id_doctor number,
     id_specialization number,
     primary key (id_doctor, id_specialization),
-    foreign key (id_doctor) references kabenyk_st.doctors (id_doctor) ON DELETE CASCADE,
-    foreign key (id_specialization) references kabenyk_st.specializations (id_specialization) ON DELETE CASCADE
+    foreign key (id_doctor) references kabenyk_st.doctors (id_doctor) on delete cascade,
+    foreign key (id_specialization) references kabenyk_st.specializations (id_specialization) on delete cascade
 );
 create table kabenyk_st.ticket_flags(
     id_ticket_flag number default kabenyk_st.seq_for_primary_key.nextval primary key,
@@ -76,7 +76,7 @@ create table kabenyk_st.tickets(
     id_ticket_flag number references kabenyk_st.ticket_flags (id_ticket_flag),
     begin_time date not null,
     end_time date not null,
-    id_doctor number references kabenyk_st.doctors (id_doctor) ON DELETE CASCADE
+    id_doctor number references kabenyk_st.doctors (id_doctor) on delete cascade
 );
 create table kabenyk_st.accounts(
     id_account number default kabenyk_st.seq_for_primary_key.nextval primary key,
