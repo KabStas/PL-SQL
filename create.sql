@@ -118,5 +118,5 @@ create table kabenyk_st.patients_journals(
     id_journal_record_status number references kabenyk_st.journal_record_status (id_journal_record_status),
     day_time date not null,
     id_patient number references kabenyk_st.patients (id_patient),
-    id_ticket number references kabenyk_st.tickets (id_ticket) ON DELETE CASCADE
+    id_ticket number references kabenyk_st.tickets (id_ticket) on delete cascade
 );
