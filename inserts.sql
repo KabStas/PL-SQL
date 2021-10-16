@@ -79,6 +79,8 @@ insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, qua
 values (5, 'Денисов', 'Денис', 'Денисович', 5, 'первая категория');
 insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, qualifications)
 values (6, 'Евгеньев', 'Евгений', 'Евгеньевич', 6, 'вторая категория');
+insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, qualifications)
+values (5, 'Жуладзе', 'Жиза', 'Живаевич', 5, 'высшая категория');
 
 insert into kabenyk_st.sex(sex)
 values ('м');
@@ -118,6 +120,8 @@ insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
 values (5,2);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
 values (6,3);
+insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
+values (7,2);
 
 insert into kabenyk_st.ticket_flags(flag)
 values ('открыт');
