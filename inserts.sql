@@ -225,22 +225,22 @@ insert into kabenyk_st.PATIENTS_documents(id_patient, id_document)
 values (6,6);
 
 insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (1, 'высшее', 'высшая категория', 60000);
+values (1, 'высшее', '1 категория', 60000);
 insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (2, 'высшее', 'первая категория', 50000);
+values (2, 'высшее', '2 категория', 50000);
 insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (3, 'высшее', 'вторая категория', 40000);
+values (3, 'высшее', '3 категория', 40000);
 insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (4, 'высшее', 'высшая категория', 60000);
+values (4, 'высшее', '1 категория', 60000);
 insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (5, 'высшее', 'первая категория', 50000);
+values (5, 'высшее', '2 категория', 50000);
 insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (6, 'высшее', 'вторая категория', 40000);
+values (6, 'высшее', '3 категория', 40000);
 insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (10, 'высшее', 'высшая категория', 60000);
+values (10, 'высшее', '1 категория', 60000);
 insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (11, 'высшее', 'первая категория', 50000);
+values (11, 'высшее', '2 категория', 50000);
 insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (12, 'высшее', 'вторая категория', 40000);
+values (12, 'высшее', '3 категория', 40000);
 
 commit;
