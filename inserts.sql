@@ -126,11 +126,11 @@ values (5,2);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
 values (6,3);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (7,2);
+values (10,2);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (8,4);
+values (11,4);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (9,4);
+values (12,4);
 
 insert into kabenyk_st.ticket_flags(flag)
 values ('открыт');
@@ -201,21 +201,3 @@ insert into kabenyk_st.patients_journals(id_journal_record_status,
 values (1, to_date('2021/12/30 12:30', 'yyyy/mm/dd hh24:mi'), 3, 6);
 
 commit;
-
---select * from KABENYK_ST.regions;
---select * from KABENYK_ST.towns;
---select * from KABENYK_ST.organizations;
---select * from KABENYK_ST.hospital_type;
---select * from KABENYK_ST.hospital_availability;
---select * from KABENYK_ST.hospitals;
---select * from KABENYK_ST.working_time;
---select * from KABENYK_ST.doctors;
---select * from KABENYK_ST.sex;
---select * from KABENYK_ST.specializations;
---select * from KABENYK_ST.doctors_specializations;
---select * from KABENYK_ST.ticket_flags;
---select * from KABENYK_ST.tickets;
---select * from KABENYK_ST.accounts;
---select * from KABENYK_ST.patients;
---select * from KABENYK_ST.journal_record_status;
---select * from KABENYK_ST.patients_journals;
