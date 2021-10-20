@@ -115,7 +115,7 @@ end;
 declare
     v_date_1 date := '31-12-2021';
     v_date_2 date := '01-01-2021';
-    type arr_type is table of number
+    type arr_type is table of varchar2(100)
     index by binary_integer;
     a_array_of_ticket_id arr_type;
     a_index binary_integer := 1;
