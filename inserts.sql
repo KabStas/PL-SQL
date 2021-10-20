@@ -94,10 +94,10 @@ values ('ж');
 insert into kabenyk_st.sex(sex)
 values ('м+ж');
 
-insert into kabenyk_st.specializations(specialization, min_age, max_age, id_sex)
-values ('педиатр', 0, 3, 3);
-insert into kabenyk_st.specializations(specialization, min_age, max_age, id_sex)
-values ('детский хирург', 4, 17, 3);
+insert into kabenyk_st.specializations(specialization, min_age, max_age)
+values ('педиатр', 0, 3);
+insert into kabenyk_st.specializations(specialization, min_age, max_age)
+values ('детский хирург', 4, 17);
 insert into kabenyk_st.specializations(specialization, min_age, max_age, id_sex)
 values ('уролог', 18, 200, 1);
 insert into kabenyk_st.specializations(specialization, min_age, max_age, id_sex)
