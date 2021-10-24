@@ -1,11 +1,11 @@
 --1. Выдать все города по регионам
 select
-    kabenyk_st.towns.name as town,
-    kabenyk_st.regions.name as region
+    t.name as town,
+    r.name as region
 from
-    kabenyk_st.towns
-join kabenyk_st.regions
-    on kabenyk_st.towns.id_region = kabenyk_st.regions.id_region;
+    kabenyk_st.towns t
+join kabenyk_st.regions r
+    on t.id_region = r.id_region;
 
 --2 Выдать все специальности (неудаленные), в которых есть хотя бы один доктор (неудаленный),
 -- которые работают в больницах (неудаленных)
@@ -34,8 +34,8 @@ select
     count(d.id_hospital) as doctors_quantity,
     case
         when to_char(sysdate, 'hh24:mi') < w.end_time
-        then 'Yes'
-        else 'No'
+        then 1
+        else 0
     end as is_working
 from
     kabenyk_st.doctors_specializations ds
@@ -54,7 +54,12 @@ from
 where s.specialization = 'гинеколог'
     and h.data_of_record_deletion is null
 group by s.specialization, h.name, a.availability, t.type, w.end_time
-order by t.type desc, doctors_quantity desc, is_working;
+order by
+        case
+            when t.type = 'частная' then 0
+            else 1
+        end,
+        doctors_quantity desc, is_working desc;
 
 --4. Выдать всех врачей (неудаленных) конкретной больницы, отсортировать по квалификации:
 -- у кого есть выше, по участку: если участок совпадает с участком пациента, то такие выше
@@ -68,10 +73,14 @@ from
     join kabenyk_st.hospitals h
         on d.id_hospital = h.id_hospital
     join kabenyk_st.doctors_qualifications q
-        on d.id_doctor = q.id_doctor
+        on d.id_doctors_qualifications = q.id_doctors_qualifications
 where h.name = 'Авиценна №4'
     and d.data_of_record_deletion is null
-order by qualification, area;
+order by qualification,
+         case
+            when d.area = 5 then 0
+            else 1
+        end;
 
 --5. Выдать все талоны конкретного врача, не показывать талоны, которые начались
 -- раньше текущего времени

@@ -67,70 +67,86 @@ values ('Пятница', '10.00', '20.00', 5);
 insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
 values ('Суббота', '11.00', '19.00', 6);
 
-insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area)
-values (1, 'Абрамов', 'Абрам', 'Абрамович', 1);
-insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area)
-values (2, 'Борисов', 'Борис', 'Борисович', 2);
-insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area)
-values (3, 'Вениаминов', 'Вениамин', 'Вениаминович', 3);
-insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area)
-values (4, 'Григорьев', 'Григорий', 'Григорьевич', 4);
-insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area)
-values (5, 'Денисов', 'Денис', 'Денисович', 5);
-insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area)
-values (6, 'Евгеньев', 'Евгений', 'Евгеньевич', 6);
-insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area)
-values (5, 'Жуладзе', 'Жиза', 'Живаевич', 5);
-insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area)
-values (4, 'Задов', 'Зиман', 'Зиманевич', 3);
-insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area)
-values (4, 'Иванов', 'Иван', 'Иванович', 5);
+insert into kabenyk_st.doctors_qualifications(education, qualification, salary)
+values ('высшее', '1 категория', 60000);
+insert into kabenyk_st.doctors_qualifications(education, qualification, salary)
+values ('высшее', '2 категория', 50000);
+insert into kabenyk_st.doctors_qualifications(education, qualification, salary)
+values ('высшее', '3 категория', 40000);
+insert into kabenyk_st.doctors_qualifications(education, qualification, salary)
+values ('высшее', '1 категория', 60000);
+insert into kabenyk_st.doctors_qualifications(education, qualification, salary)
+values ('высшее', '2 категория', 50000);
+insert into kabenyk_st.doctors_qualifications(education, qualification, salary)
+values ('высшее', '3 категория', 40000);
+insert into kabenyk_st.doctors_qualifications(education, qualification, salary)
+values ('высшее', '1 категория', 60000);
+insert into kabenyk_st.doctors_qualifications(education, qualification, salary)
+values ('высшее', '2 категория', 50000);
+insert into kabenyk_st.doctors_qualifications(education, qualification, salary)
+values ('высшее', '3 категория', 40000);
 
+insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, id_doctors_qualifications)
+values (1, 'Абрамов', 'Абрам', 'Абрамович', 1, 2);
+insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, id_doctors_qualifications)
+values (2, 'Борисов', 'Борис', 'Борисович', 2, 3);
+insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, id_doctors_qualifications)
+values (3, 'Вениаминов', 'Вениамин', 'Вениаминович', 3, 4);
+insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, id_doctors_qualifications)
+values (4, 'Григорьев', 'Григорий', 'Григорьевич', 4, 5);
+insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, id_doctors_qualifications)
+values (5, 'Денисов', 'Денис', 'Денисович', 5, 6);
+insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, id_doctors_qualifications)
+values (6, 'Евгеньев', 'Евгений', 'Евгеньевич', 6, 7);
+insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, id_doctors_qualifications)
+values (5, 'Жуладзе', 'Жиза', 'Живаевич', 5, 8);
+insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, id_doctors_qualifications)
+values (4, 'Задов', 'Зиман', 'Зиманевич', 3, 9);
+insert into kabenyk_st.doctors(id_hospital, surname, name, patronymic, area, id_doctors_qualifications)
+values (4, 'Иванов', 'Иван', 'Иванович', 5, 10);
 
-insert into kabenyk_st.sex(sex)
+insert into kabenyk_st.gender(gender)
 values ('м');
-insert into kabenyk_st.sex(sex)
+insert into kabenyk_st.gender(gender)
 values ('ж');
-insert into kabenyk_st.sex(sex)
-values ('м+ж');
 
 insert into kabenyk_st.specializations(specialization, min_age, max_age)
 values ('педиатр', 0, 3);
 insert into kabenyk_st.specializations(specialization, min_age, max_age)
 values ('детский хирург', 4, 17);
-insert into kabenyk_st.specializations(specialization, min_age, max_age, id_sex)
+insert into kabenyk_st.specializations(specialization, min_age, max_age, ID_GENDER)
 values ('уролог', 18, 200, 1);
-insert into kabenyk_st.specializations(specialization, min_age, max_age, id_sex)
+insert into kabenyk_st.specializations(specialization, min_age, max_age, ID_GENDER)
 values ('гинеколог', 18, 200, 2);
-insert into kabenyk_st.specializations(specialization, min_age, max_age, id_sex)
+insert into kabenyk_st.specializations(specialization, min_age, max_age, ID_GENDER)
 values ('дерматолог-венеролог', 18, 200, 1);
-insert into kabenyk_st.specializations(specialization, min_age, max_age, id_sex)
+insert into kabenyk_st.specializations(specialization, min_age, max_age, ID_GENDER)
 values ('репродуктолог', 18, 200, 2);
 
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (1,1);
+values (2, 1);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (1,2);
+values (2, 2);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (2,3);
+values (3, 3);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (2,5);
+values (3, 5);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (3,4);
+values (4, 4);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (3,6);
+values (4, 6);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (4,1);
+values (5, 1);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (5,2);
+values (6, 2);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (6,3);
+values (7, 3);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (10,2);
+values (8, 2);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (11,4);
+values (9, 4);
 insert into kabenyk_st.doctors_specializations(id_doctor, id_specialization)
-values (12,4);
+values (10, 4);
 
 insert into kabenyk_st.ticket_flags(flag)
 values ('открыт');
@@ -138,19 +154,19 @@ insert into kabenyk_st.ticket_flags(flag)
 values ('закрыт');
 
 insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
-values (2, to_date('2021/08/30 08:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 08:45', 'yyyy/mm/dd hh24:mi'), 1);
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
 values (2, to_date('2021/08/30 08:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 08:45', 'yyyy/mm/dd hh24:mi'), 2);
 insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
 values (2, to_date('2021/08/30 08:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 08:45', 'yyyy/mm/dd hh24:mi'), 3);
 insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
-values (1, to_date('2021/08/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 09:45', 'yyyy/mm/dd hh24:mi'), 4);
+values (2, to_date('2021/08/30 08:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 08:45', 'yyyy/mm/dd hh24:mi'), 4);
 insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
 values (1, to_date('2021/08/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 09:45', 'yyyy/mm/dd hh24:mi'), 5);
 insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
 values (1, to_date('2021/08/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 09:45', 'yyyy/mm/dd hh24:mi'), 6);
 insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
-values (1, to_date('2021/11/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 09:45', 'yyyy/mm/dd hh24:mi'), 1);
+values (1, to_date('2021/08/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 09:45', 'yyyy/mm/dd hh24:mi'), 7);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
+values (1, to_date('2021/11/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 09:45', 'yyyy/mm/dd hh24:mi'), 8);
 
 insert into kabenyk_st.accounts(name)
 values ('MMM');
@@ -166,24 +182,24 @@ insert into kabenyk_st.accounts(name)
 values ('SSS');
 
 insert into kabenyk_st.patients(surname, name, patronymic, date_of_birth,
-                                id_sex, area, id_account)
+                                id_gender, area, id_account)
 values ('Макаров', 'Макар', 'Макарович', to_date('1980/02/01', 'yyyy/mm/dd'), 1, 1, 1);
 insert into kabenyk_st.patients(surname, name, patronymic, date_of_birth,
-                                id_sex, phone, area, id_account)
+                                id_gender, phone, area, id_account)
 values ('Некрасова', 'Наталья', 'Николаевна', to_date('1986/08/10', 'yyyy/mm/dd'), 2, 89048795689, 2, 2);
 insert into kabenyk_st.patients(surname, name, patronymic, date_of_birth,
-                                id_sex, phone, area, id_account)
+                                id_gender, phone, area, id_account)
 values ('Орлов', 'Олег', 'Олегович', to_date('1972/01/23', 'yyyy/mm/dd'),
         1, 89010258689, 3, 3);
 insert into kabenyk_st.patients(surname, name, patronymic, date_of_birth,
-                                id_sex, phone, area, id_account)
+                                id_gender, phone, area, id_account)
 values ('Петров', 'Петр', 'Петрович', to_date('1956/02/24', 'yyyy/mm/dd'),
         1, 89072378589, 4, 4);
 insert into kabenyk_st.patients(surname, name, patronymic, date_of_birth,
-                                id_sex, area, id_account)
+                                id_gender, area, id_account)
 values ('Рычков', 'Ринат', 'Ринатович', to_date('1979/10/01', 'yyyy/mm/dd'), 1, 5, 5);
 insert into kabenyk_st.patients(surname, name, patronymic, date_of_birth,
-                                id_sex, area, id_account)
+                                id_gender, area, id_account)
 values ('Степанова', 'Светлана', 'Степановна', to_date('1989/03/07', 'yyyy/mm/dd'), 2, 6, 6);
 
 insert into kabenyk_st.journal_record_status(status)
@@ -193,54 +209,29 @@ values ('прием окончен');
 
 insert into kabenyk_st.patients_journals(id_journal_record_status,
                                          day_time, id_patient, id_ticket)
-values (2, to_date('2021/12/30 10:30', 'yyyy/mm/dd hh24:mi'), 1, 1);
+values (2, to_date('2021/12/30 10:30', 'yyyy/mm/dd hh24:mi'), 1, 2);
 insert into kabenyk_st.patients_journals(id_journal_record_status,
                                          day_time, id_patient, id_ticket)
-values (1, to_date('2021/12/30 12:30', 'yyyy/mm/dd hh24:mi'), 3, 6);
+values (1, to_date('2021/12/30 12:30', 'yyyy/mm/dd hh24:mi'), 3, 7);
 
-insert into kabenyk_st.documents(document_type, document_number)
-values ('polis', '1111222233334444');
-insert into kabenyk_st.documents(document_type, document_number)
-values ('polis', '2222333344445555');
-insert into kabenyk_st.documents(document_type, document_number)
-values ('polis', '3333444455556666');
-insert into kabenyk_st.documents(document_type, document_number)
-values ('polis', '1111222255556666');
-insert into kabenyk_st.documents(document_type, document_number)
-values ('polis', '1111666633334444');
-insert into kabenyk_st.documents(document_type, document_number)
-values ('polis', '8888222233334444');
+insert into kabenyk_st.documents(name)
+values ('polis');
+insert into kabenyk_st.documents(name)
+values ('passport');
+insert into kabenyk_st.documents(name)
+values ('snils');
 
-insert into kabenyk_st.PATIENTS_documents(id_patient, id_document)
-values (1,1);
-insert into kabenyk_st.PATIENTS_documents(id_patient, id_document)
-values (2,2);
-insert into kabenyk_st.PATIENTS_documents(id_patient, id_document)
-values (3,3);
-insert into kabenyk_st.PATIENTS_documents(id_patient, id_document)
-values (4,4);
-insert into kabenyk_st.PATIENTS_documents(id_patient, id_document)
-values (5,5);
-insert into kabenyk_st.PATIENTS_documents(id_patient, id_document)
-values (6,6);
-
-insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (1, 'высшее', '1 категория', 60000);
-insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (2, 'высшее', '2 категория', 50000);
-insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (3, 'высшее', '3 категория', 40000);
-insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (4, 'высшее', '1 категория', 60000);
-insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (5, 'высшее', '2 категория', 50000);
-insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (6, 'высшее', '3 категория', 40000);
-insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (10, 'высшее', '1 категория', 60000);
-insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (11, 'высшее', '2 категория', 50000);
-insert into kabenyk_st.doctors_qualifications(id_doctor, education, qualification, salary)
-values (12, 'высшее', '3 категория', 40000);
+insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
+values (1, 4, 1111222233334444);
+insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
+values (2, 4, 2222333344445555);
+insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
+values (3, 4, 2222333344446666);
+insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
+values (4, 4, 1111222233335555);
+insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
+values (5, 4, 3333222233334444);
+insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
+values (6, 4, 7777222233334444);
 
 commit;
