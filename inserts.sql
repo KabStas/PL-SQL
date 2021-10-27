@@ -57,7 +57,27 @@ values ('Доктор Пилюлькин - 6', 1, 2, 6);
 insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
 values ('Понедельник', '6.00', '00.00', 1);
 insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
+values ('Вторник', '6.00', '00.00', 1);
+insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
+values ('Среда', '6.00', '00.00', 1);
+insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
+values ('Четверг', '6.00', '00.00', 1);
+insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
+values ('Пятница', '6.00', '00.00', 1);
+insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
+values ('Суббота', '8.00', '22.00', 1);
+insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
+values ('Понедельник', '7.00', '23.00', 2);
+insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
 values ('Вторник', '7.00', '23.00', 2);
+insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
+values ('Среда', '7.00', '23.00', 2);
+insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
+values ('Четверг', '7.00', '23.00', 2);
+insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
+values ('Пятница', '7.00', '23.00', 2);
+insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
+values ('Суббота', '9.00', '21.00', 2);
 insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
 values ('Среда', '8.00', '22.00', 3);
 insert into kabenyk_st.working_time(day, begin_time, end_time, id_hospital)
@@ -167,6 +187,13 @@ insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
 values (1, to_date('2021/08/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 09:45', 'yyyy/mm/dd hh24:mi'), 7);
 insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
 values (1, to_date('2021/11/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 09:45', 'yyyy/mm/dd hh24:mi'), 8);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
+values (1, to_date('2021/11/30 10:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 10:45', 'yyyy/mm/dd hh24:mi'), 8);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
+values (1, to_date('2021/11/30 11:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 11:45', 'yyyy/mm/dd hh24:mi'), 6);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
+values (1, to_date('2021/11/30 12:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 12:45', 'yyyy/mm/dd hh24:mi'), 7);
+
 
 insert into kabenyk_st.accounts(name)
 values ('MMM');
@@ -224,7 +251,13 @@ values ('snils');
 insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
 values (1, 4, 1111222233334444);
 insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
+values (1, 5, 3204523897);
+insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
 values (2, 4, 2222333344445555);
+insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
+values (2, 5, 3208444555);
+insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
+values (2, 6, 5555999900001111);
 insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
 values (3, 4, 2222333344446666);
 insert into kabenyk_st.documents_numbers(id_patient, id_document, value)
