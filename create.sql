@@ -64,7 +64,7 @@ create table kabenyk_st.specializations(
     specialization varchar2(100) not null,
     min_age number not null,
     max_age number not null,
-    id_sex number references kabenyk_st.gender(id_gender),
+    id_gender number references kabenyk_st.gender(id_gender),
     data_of_record_deletion date
 );
 create table kabenyk_st.doctors_specializations(
