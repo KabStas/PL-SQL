@@ -25,20 +25,24 @@ begin
     where h.id_hospital = v_variable;
     dbms_output.put_line(v_result);
 end;
-/*
+
 --4. Заведите булеву переменную. создайте запрос который имеет разный результат
 -- в зависимости от бул переменной. всеми известными способами
 declare
-    v_is_condition boolean := true;
+    v_is_condition boolean := false;
     v_result varchar2(200);
     --v_number := sys.diutil.bool_to_int(v_is_condition);
 begin
-    select p.id_patient
+    select p.surname
     into v_result
     from kabenyk_st.patients p
-    where p.id_patient = 1;
+    where (sys.diutil.bool_to_int(v_is_condition) = 1 and p.id_patient = 1)
+          --(v_is_condition = true and p.id_patient = 1)
+          or
+          --(v_is_condition = false and p.id_patient = 2);
+          (sys.diutil.bool_to_int(v_is_condition) = 0 and p.id_patient = 2);
     dbms_output.put_line(v_result);
-end;**/
+end;
 
 --5. Заведите заранее переменные даты. создайте выборку между датами, за сегодня.
 -- в день за неделю назад. сделайте тоже самое но через преобразование даты из строки
