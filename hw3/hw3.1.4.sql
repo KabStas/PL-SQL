@@ -18,14 +18,15 @@ declare
         join kabenyk_st.doctors_qualifications q
             on d.id_doctors_qualifications = q.id_doctors_qualifications
     where (
-          d.data_of_record_deletion is null and
+          d.data_of_record_deletion is null) and
+          ((
           h.name = p_hospital_name and
           p_hospital_name is not null
           ) or
           (
           h.name is not null and
-          p_hospital_name is null and
-          d.data_of_record_deletion is null)
+          p_hospital_name is null
+          ))
     order by qualification,
              case
                 when d.area = 5 then 0

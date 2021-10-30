@@ -14,15 +14,15 @@ declare
         join kabenyk_st.tickets t
             on d.id_doctor = t.id_doctor
     where (
-          t.begin_time > sysdate and
+          t.begin_time > sysdate) and
+          ((
           d.surname = p_doctor_name and
           p_doctor_name is not null
           ) or
           (
-          t.begin_time > sysdate and
           d.surname is not null and
           p_doctor_name is null
-          );
+          ));
 
     type record_1 is record (
         doctor varchar2(100),

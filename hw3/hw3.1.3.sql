@@ -33,19 +33,19 @@ declare
         join kabenyk_st.working_time w
             on w.id_hospital = h.id_hospital
     where (
-          h.data_of_record_deletion is null and
+          h.data_of_record_deletion is null) and
+          ((
           s.specialization = p_specialization and
           p_specialization is not null
           ) or
           (
-          h.data_of_record_deletion is null and
           s.specialization is not null and
           p_specialization is null
-          )
-    group by s.specialization, h.name, a.availability, t.type, w.end_time
+          ))
+    group by s.specialization, h.name, a.availability, t.type, t.id_hospital_type, w.end_time
     order by
             case
-                when t.type = 'частная' then 0
+                when t.id_hospital_type = 2 then 0
                 else 1
             end,
             doctors_quantity desc, is_working desc;

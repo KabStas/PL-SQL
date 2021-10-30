@@ -19,16 +19,16 @@ declare
     where (
           s.data_of_record_deletion is null and
           d.data_of_record_deletion is null and
-          h.data_of_record_deletion is null and
+          h.data_of_record_deletion is null
+          ) and
+          ((
           s.id_specialization = p_id_specialization and
           p_id_specialization is not null
           ) or
           (
-          s.data_of_record_deletion is null and
-          d.data_of_record_deletion is null and
-          h.data_of_record_deletion is null and
           s.id_specialization is not null and
-          p_id_specialization is null);
+          p_id_specialization is null
+          ));
 
     type record_1 is record (
         specialization varchar2(100),
