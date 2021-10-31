@@ -48,7 +48,7 @@ declare
                 when t.id_hospital_type = 2 then 0
                 else 1
             end,
-            doctors_quantity desc, is_working desc;
+            doctors_quantity, is_working desc;
 
     type record_1 is record (
         specialization varchar2(100),
@@ -82,11 +82,11 @@ begin
 
     open v_specializations_by_hospital_and_doctors_cursor for
         select
-        s.specialization,
-        h.name,
-        t.type,
-        a.availability,
-        count(d.id_hospital) as doctors_quantity,
+            s.specialization,
+            h.name,
+            t.type,
+            a.availability,
+            count(d.id_hospital) as doctors_quantity,
         case
             when to_char(sysdate, 'hh24:mi') < w.end_time
             then 1
@@ -108,10 +108,10 @@ begin
                 on w.id_hospital = h.id_hospital
         where h.data_of_record_deletion is null and
               s.specialization = 'педиатр'
-        group by s.specialization, h.name, a.availability, t.type, w.end_time
+        group by s.specialization, h.name, a.availability, t.type, t.id_hospital_type, w.end_time
         order by
                 case
-                    when t.type = 'частная' then 0
+                    when t.id_hospital_type = 2 then 0
                     else 1
                 end,
                 doctors_quantity desc, is_working desc;
@@ -158,13 +158,13 @@ begin
             join kabenyk_st.working_time w
                 on w.id_hospital = h.id_hospital
         where h.data_of_record_deletion is null
-        group by s.specialization, h.name, a.availability, t.type, w.end_time
+        group by s.specialization, h.name, a.availability, t.type, t.id_hospital_type, w.end_time
         order by
                 case
-                    when t.type = 'частная' then 0
+                    when t.id_hospital_type = 2 then 0
                     else 1
-                end,
-                doctors_quantity desc, is_working desc
+                end desc,
+                doctors_quantity, is_working desc
     )
     loop
         dbms_output.put_line (i.specialization|| ', ' || i.hospital||

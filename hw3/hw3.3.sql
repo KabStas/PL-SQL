@@ -22,16 +22,13 @@ declare
           h.id_hospital is not null and
           p_id_hospital is null
           )
-    order by h.name,
-             case
-                 when wt.day = 'Понедельник' then 1
-                 when wt.day = 'Вторник' then 2
-                 when wt.day = 'Среда' then 3
-                 when wt.day = 'Четверг' then 4
-                 when wt.day = 'Пятница' then 5
-                 when wt.day = 'Суббота' then 6
-                 when wt.day = 'Воскресенье' then 7
-             end;
+    order by h.name, decode (wt.day, 'Понедельник', 1,
+                                     'Вторник',2,
+                                     'Среда', 3,
+                                     'Четверг', 4,
+                                     'Пятница', 5,
+                                     'Суббота', 6,
+                                     'Воскресенье', 7);
 
     type record_1 is record (
         name varchar2(100),
@@ -73,16 +70,13 @@ begin
             join kabenyk_st.hospitals h
                 on wt.id_hospital = h.id_hospital
         where h.id_hospital = 2
-        order by h.name,
-             case
-                 when wt.day = 'Понедельник' then 1
-                 when wt.day = 'Вторник' then 2
-                 when wt.day = 'Среда' then 3
-                 when wt.day = 'Четверг' then 4
-                 when wt.day = 'Пятница' then 5
-                 when wt.day = 'Суббота' then 6
-                 when wt.day = 'Воскресенье' then 7
-             end;
+        order by h.name, decode (wt.day, 'Понедельник', 1,
+                                         'Вторник',2,
+                                         'Среда', 3,
+                                         'Четверг', 4,
+                                         'Пятница', 5,
+                                         'Суббота', 6,
+                                         'Воскресенье', 7);
 
         dbms_output.put_line ('second cursor:');
 
@@ -109,16 +103,13 @@ begin
             kabenyk_st.working_time wt
             join kabenyk_st.hospitals h
                 on wt.id_hospital = h.id_hospital
-        order by h.id_hospital,
-             case
-                 when wt.day = 'Понедельник' then 1
-                 when wt.day = 'Вторник' then 2
-                 when wt.day = 'Среда' then 3
-                 when wt.day = 'Четверг' then 4
-                 when wt.day = 'Пятница' then 5
-                 when wt.day = 'Суббота' then 6
-                 when wt.day = 'Воскресенье' then 7
-             end
+        order by h.id_hospital, decode (wt.day, 'Понедельник', 1,
+                                     'Вторник',2,
+                                     'Среда', 3,
+                                     'Четверг', 4,
+                                     'Пятница', 5,
+                                     'Суббота', 6,
+                                     'Воскресенье', 7)
     )
     loop
         dbms_output.put_line (i.name|| ', '|| i.day||', ' ||

@@ -3,7 +3,7 @@
 
 declare
     cursor tickets_by_doctor_cursor (
-        p_doctor_name in varchar2
+        p_doctor_surname in varchar2
     )
     is
     select
@@ -13,15 +13,14 @@ declare
         kabenyk_st.doctors d
         join kabenyk_st.tickets t
             on d.id_doctor = t.id_doctor
-    where (
-          t.begin_time > sysdate) and
+    where t.begin_time > sysdate and
           ((
-          d.surname = p_doctor_name and
-          p_doctor_name is not null
+          d.surname = p_doctor_surname and
+          p_doctor_surname is not null
           ) or
           (
           d.surname is not null and
-          p_doctor_name is null
+          p_doctor_surname is null
           ));
 
     type record_1 is record (
@@ -53,14 +52,14 @@ begin
     open v_tickets_by_doctor_cursor for
 
         select
-        d.surname,
-        t.begin_time
+            d.surname,
+            t.begin_time
         from
             kabenyk_st.doctors d
             join kabenyk_st.tickets t
                 on d.id_doctor = t.id_doctor
         where t.begin_time > sysdate and
-              d.surname = 'Денисов';
+              d.surname like 'Денисов';
 
         dbms_output.put_line ('second cursor:');
 
@@ -81,8 +80,8 @@ begin
         select d.surname    as doctor,
                t.begin_time as time
         from kabenyk_st.doctors d
-                 join kabenyk_st.tickets t
-                      on d.id_doctor = t.id_doctor
+            join kabenyk_st.tickets t
+                on d.id_doctor = t.id_doctor
         where t.begin_time > sysdate
     )
     loop

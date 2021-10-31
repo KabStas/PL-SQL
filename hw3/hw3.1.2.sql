@@ -58,9 +58,9 @@ begin
 
     open v_specializations_by_active_doctors_cursor for
         select
-        s.specialization,
-        d.surname,
-        h.name
+            s.specialization,
+            d.surname,
+            h.name
         from
             kabenyk_st.specializations s
             join kabenyk_st.doctors d
