@@ -10,24 +10,24 @@ begin
     v_id_patient := 1;
     open v_patients_journal_by_patient_cursor for
         select
-        p.surname,
-        s.status,
-        pj.day_time,
-        d.surname
-    from
-        kabenyk_st.patients_journals pj
-        join kabenyk_st.patients p
-            on pj.id_patient = p.id_patient
-        join kabenyk_st.journal_record_status s
-            on pj.id_journal_record_status = s.id_journal_record_status
-        join kabenyk_st.tickets t
-            on pj.id_ticket = t.id_ticket
-        join kabenyk_st.doctors d
-            on t.id_doctor = d.id_doctor
-        where v_id_patient is null
-              or
-              (v_id_patient is not null and
-               pj.id_patient = v_id_patient);
+            p.surname,
+            s.status,
+            pj.day_time,
+            d.surname
+        from
+            kabenyk_st.patients_journals pj
+            join kabenyk_st.patients p
+                on pj.id_patient = p.id_patient
+            join kabenyk_st.journal_record_status s
+                on pj.id_journal_record_status = s.id_journal_record_status
+            join kabenyk_st.tickets t
+                on pj.id_ticket = t.id_ticket
+            join kabenyk_st.doctors d
+                on t.id_doctor = d.id_doctor
+            where v_id_patient is null
+                  or
+                  (v_id_patient is not null and
+                   pj.id_patient = v_id_patient);
     return v_patients_journal_by_patient_cursor;
 end;
 
