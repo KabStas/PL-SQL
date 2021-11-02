@@ -1,5 +1,6 @@
-create or replace function kabenyk_st.is_patient_already_recorded_as_func
-                           (p_id_patient in number, p_id_ticket in number)
+create or replace function kabenyk_st.is_patient_already_recorded_as_func (
+    p_id_patient in number, p_id_ticket in number
+)
 return number
 as
     v_result number;
@@ -16,7 +17,8 @@ begin
         select pj.id_patient, pj.id_ticket
         from kabenyk_st.patients_journals pj
         where pj.id_patient = p_id_patient and
-              pj.id_ticket = p_id_ticket;
+              pj.id_ticket = p_id_ticket and
+              pj.id_journal_record_status != 3;
 
         fetch v_cursor into v_record;
 
@@ -27,13 +29,14 @@ begin
             v_result := 0;
             dbms_output.put_line ('Error. Patient is already recorded');
         end if;
-
     close v_cursor;
+
     return v_result;
 end;
 
-create or replace function kabenyk_st.is_gender_matched_as_func
-                           (p_id_patient in number, p_id_specialization in number)
+create or replace function kabenyk_st.is_gender_matched_as_func (
+    p_id_patient in number, p_id_specialization in number
+)
 return number
 as
     v_result number;
@@ -62,8 +65,9 @@ begin
     return v_result;
 end;
 
-create or replace function kabenyk_st.is_age_correct_as_func
-                           (p_id_patient in number, p_id_specialization in number)
+create or replace function kabenyk_st.is_age_correct_as_func (
+    p_id_patient in number, p_id_specialization in number
+)
 return number
 as
     v_result number;
@@ -103,8 +107,9 @@ begin
     return v_result;
 end;
 
-create or replace function kabenyk_st.is_ticket_open_as_func
-                           (p_id_ticket in number)
+create or replace function kabenyk_st.is_ticket_open_as_func (
+    p_id_ticket in number
+)
 return number
 as
     v_result number;
@@ -127,8 +132,9 @@ begin
     return v_result;
 end;
 
-create or replace function kabenyk_st.is_time_correct_as_func
-                           (p_id_ticket in number)
+create or replace function kabenyk_st.is_time_correct_as_func (
+    p_id_ticket in number
+)
 return number
 as
     v_result number;
@@ -151,8 +157,9 @@ begin
     return v_result;
 end;
 
-create or replace function kabenyk_st.is_doctor_marked_as_deleted_as_func
-                           (p_id_ticket in number)
+create or replace function kabenyk_st.is_doctor_marked_as_deleted_as_func (
+    p_id_ticket in number
+)
 return number
 as
     v_result number;
@@ -177,8 +184,9 @@ begin
     return v_result;
 end;
 
-create or replace function kabenyk_st.is_specialization_marked_as_deleted_as_func
-                           (p_id_specialization in number)
+create or replace function kabenyk_st.is_specialization_marked_as_deleted_as_func (
+    p_id_specialization in number
+)
 return number
 as
     v_result number;
@@ -201,8 +209,9 @@ begin
     return v_result;
 end;
 
-create or replace function kabenyk_st.is_hospital_marked_as_deleted_as_func
-                           (p_id_ticket in number)
+create or replace function kabenyk_st.is_hospital_marked_as_deleted_as_func (
+    p_id_ticket in number
+)
 return number
 as
     v_result number;
@@ -229,8 +238,9 @@ begin
     return v_result;
 end;
 
-create or replace function kabenyk_st.is_patient_has_oms_as_func
-                           (p_id_patient in number)
+create or replace function kabenyk_st.is_patient_has_oms_as_func (
+    p_id_patient in number
+)
 return number
 as
     v_result number;
@@ -255,7 +265,9 @@ begin
     return v_result;
 end;
 
-create or replace procedure kabenyk_st.outputting_result_as_procedure(v_id_journal in number)
+create or replace procedure kabenyk_st.outputting_result_as_procedure (
+    p_id_journal in number
+)
 as
     v_patient_journal_cursor sys_refcursor;
     type record_1 is record (
@@ -266,7 +278,6 @@ as
     v_record record_1;
 
 begin
-
     open v_patient_journal_cursor for
         select
             p.surname,
@@ -280,7 +291,7 @@ begin
                 on pj.id_ticket = t.id_ticket
             join kabenyk_st.doctors d
                 on t.id_doctor = d.id_doctor
-        where pj.id_journal = v_id_journal;
+        where pj.id_journal = p_id_journal;
 
         fetch v_patient_journal_cursor into v_record;
         dbms_output.put_line ('Record successful');
@@ -291,9 +302,9 @@ begin
 end;
 
 declare
-    p_id_patient number := 3;
-    p_id_ticket number := 3;
-    p_id_specialization number := 3;
+    v_id_patient number := 3;
+    v_id_ticket number := 3;
+    v_id_specialization number := 3;
     v_id_journal number;
     v_begin_time date;
     v_result_1 number;
@@ -307,46 +318,58 @@ declare
     v_result_9 number;
 
 begin
-    v_result_1 := kabenyk_st.is_patient_already_recorded_as_func
-                           (p_id_patient, p_id_ticket);
-    v_result_2 := kabenyk_st.is_gender_matched_as_func
-                           (p_id_patient, p_id_specialization);
-    v_result_3 := kabenyk_st.is_age_correct_as_func
-                           (p_id_patient, p_id_specialization);
-    v_result_4 := kabenyk_st.is_ticket_open_as_func (p_id_ticket);
-    v_result_5 := kabenyk_st.is_time_correct_as_func (p_id_ticket);
-    v_result_6 := kabenyk_st.is_doctor_marked_as_deleted_as_func (p_id_ticket);
-    v_result_7 := kabenyk_st.is_specialization_marked_as_deleted_as_func
-                           (p_id_specialization);
-    v_result_8 := kabenyk_st.is_hospital_marked_as_deleted_as_func (p_id_ticket);
-    v_result_9 := kabenyk_st.is_patient_has_oms_as_func (p_id_patient);
+    v_result_1 := kabenyk_st.is_patient_already_recorded_as_func (
+        p_id_patient => v_id_patient, p_id_ticket => v_id_ticket
+    );
+    v_result_2 := kabenyk_st.is_gender_matched_as_func (
+        p_id_patient => v_id_patient, p_id_specialization => v_id_specialization
+    );
+    v_result_3 := kabenyk_st.is_age_correct_as_func (
+        p_id_patient => v_id_patient, p_id_specialization => v_id_specialization
+    );
+    v_result_4 := kabenyk_st.is_ticket_open_as_func (
+        p_id_ticket => v_id_ticket
+    );
+    v_result_5 := kabenyk_st.is_time_correct_as_func (
+        p_id_ticket => v_id_ticket
+    );
+    v_result_6 := kabenyk_st.is_doctor_marked_as_deleted_as_func (
+        p_id_ticket => v_id_ticket
+    );
+    v_result_7 := kabenyk_st.is_specialization_marked_as_deleted_as_func (
+        p_id_specialization => v_id_specialization
+    );
+    v_result_8 := kabenyk_st.is_hospital_marked_as_deleted_as_func
+        (p_id_ticket => v_id_ticket
+    );
+    v_result_9 := kabenyk_st.is_patient_has_oms_as_func (
+        p_id_patient => v_id_patient
+    );
 
-    if v_result_1 = 1 and v_result_2 = 1 and
-       v_result_3 = 1 and v_result_4 = 1 and
-       v_result_5 = 1 and v_result_6 = 1 and
-       v_result_7 = 1 and v_result_8 = 1 and
-       v_result_9 = 1 then
+    if v_result_1 = 1 and v_result_2 = 1 and v_result_3 = 1 and
+       v_result_4 = 1 and v_result_5 = 1 and v_result_6 = 1 and
+       v_result_7 = 1 and v_result_8 = 1 and v_result_9 = 1 then
 
        update kabenyk_st.tickets t
        set t.id_ticket_flag = 2
-       where t.id_ticket = p_id_ticket;
+       where t.id_ticket = v_id_ticket;
 
        --забираем время из талона, чтобы вставить в insert
        select t.begin_time into v_begin_time
        from kabenyk_st.tickets t
-       where t.id_ticket = p_id_ticket;
+       where t.id_ticket = v_id_ticket;
 
        insert into kabenyk_st.patients_journals (id_journal_record_status,
                                                 day_time, id_patient, id_ticket)
-       values (1, v_begin_time, p_id_patient, p_id_ticket)
+       values (1, v_begin_time, v_id_patient, v_id_ticket)
        returning id_journal into v_id_journal;
-
        commit;
 
-       kabenyk_st.outputting_result_as_procedure(v_id_journal);
+       kabenyk_st.outputting_result_as_procedure (
+           p_id_journal => v_id_journal
+        );
 
     else
         dbms_output.put_line ('Error. Record unsuccessful');
     end if;
-
 end;

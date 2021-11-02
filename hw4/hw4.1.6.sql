@@ -10,19 +10,19 @@ begin
     v_id_patient := 2;
     open v_all_documents_by_patient_cursor for
         select
-        d.name,
-        dn.value,
-        p.surname
-    from
-        kabenyk_st.documents d
-        join kabenyk_st.documents_numbers dn
-            on d.id_document = dn.id_document
-        join kabenyk_st.patients p
-            on dn.id_patient = p.id_patient
+            d.name,
+            dn.value,
+            p.surname
+        from
+            kabenyk_st.documents d
+            join kabenyk_st.documents_numbers dn
+                on d.id_document = dn.id_document
+            join kabenyk_st.patients p
+                on dn.id_patient = p.id_patient
         where v_id_patient is null
               or
               (v_id_patient is not null and
-               p.id_patient = v_id_patient);
+              p.id_patient = v_id_patient);
     return v_all_documents_by_patient_cursor;
 end;
 

@@ -27,7 +27,7 @@ begin
             where v_id_patient is null
                   or
                   (v_id_patient is not null and
-                   pj.id_patient = v_id_patient);
+                  pj.id_patient = v_id_patient);
     return v_patients_journal_by_patient_cursor;
 end;
 

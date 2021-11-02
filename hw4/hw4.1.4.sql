@@ -22,16 +22,16 @@ begin
             join kabenyk_st.doctors_qualifications q
                 on d.id_doctors_qualifications = q.id_doctors_qualifications
         where d.data_of_record_deletion is null
-               and
+              and
               (v_id_hospital is null
-               or
+              or
               (v_id_hospital is not null and
-               d.id_hospital = v_id_hospital))
+              d.id_hospital = v_id_hospital))
         order by qualification,
-                 case
-                    when d.area = 5 then 0
-                    else 1
-                end;
+            case
+                when d.area = 5 then 0
+                else 1
+            end;
     return v_all_doctors_by_hospital_cursor;
 end;
 

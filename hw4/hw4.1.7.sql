@@ -10,10 +10,10 @@ begin
     v_id_hospital := 2;
     open v_hospitals_working_time_cursor for
         select
-        h.name,
-        wt.day,
-        wt.begin_time,
-        wt.end_time
+            h.name,
+            wt.day,
+            wt.begin_time,
+            wt.end_time
         from
             kabenyk_st.working_time wt
             join kabenyk_st.hospitals h
@@ -21,7 +21,7 @@ begin
         where v_id_hospital is null
               or
               (v_id_hospital is not null and
-               h.id_hospital = v_id_hospital)
+              h.id_hospital = v_id_hospital)
         order by h.id_hospital, decode (wt.day, 'Понедельник', 1,
                                                 'Вторник',2,
                                                 'Среда', 3,

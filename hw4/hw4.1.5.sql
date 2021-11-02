@@ -11,18 +11,18 @@ begin
     v_id_doctor := 8;
     open v_all_tickets_by_doctor_cursor for
         select
-        d.surname,
-        t.begin_time
-    from
-        kabenyk_st.doctors d
-        join kabenyk_st.tickets t
-            on d.id_doctor = t.id_doctor
+            d.surname,
+            t.begin_time
+        from
+            kabenyk_st.doctors d
+            join kabenyk_st.tickets t
+                on d.id_doctor = t.id_doctor
         where t.begin_time > sysdate
               and
               (v_id_doctor is null
               or
               (v_id_doctor is not null and
-               d.id_doctor = v_id_doctor));
+              d.id_doctor = v_id_doctor));
     return v_all_tickets_by_doctor_cursor;
 end;
 

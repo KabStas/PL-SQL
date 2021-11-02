@@ -1,5 +1,6 @@
 --Выдать все города по регионам
-create or replace function kabenyk_st.get_all_towns_by_regions_as_func
+create or replace function
+    kabenyk_st.get_all_towns_by_regions_as_func
 return sys_refcursor
 as
     v_all_towns_by_regions_cursor sys_refcursor;
@@ -9,7 +10,7 @@ begin
     open v_all_towns_by_regions_cursor for
         select t.name,r.name
         from kabenyk_st.towns t
-        join kabenyk_st.regions r using(id_region)
+            join kabenyk_st.regions r using(id_region)
         where v_id_region is null or
               (v_id_region is not null and
               r.id_region = v_id_region);

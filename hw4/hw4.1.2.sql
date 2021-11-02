@@ -8,7 +8,6 @@ as
     v_all_specializations_cursor sys_refcursor;
     v_id_hospital number;
 begin
-    --v_id_hospital := 1;  -- для проверки работы
     open v_all_specializations_cursor for
         select
             s.specialization,
