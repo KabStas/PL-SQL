@@ -1,27 +1,26 @@
 -- 3.выдать расписание больниц
 
-create or replace function
-    kabenyk_st.hospitals_working_time_as_func
+create or replace function kabenyk_st.hospitals_working_time_as_func (
+    p_id_hospital in number
+)
 return sys_refcursor
 as
     v_hospitals_working_time_cursor sys_refcursor;
-    v_id_hospital number;
 begin
-    v_id_hospital := 2;
     open v_hospitals_working_time_cursor for
         select
             h.name,
             wt.day,
             wt.begin_time,
             wt.end_time
-        from
-            kabenyk_st.working_time wt
+        from kabenyk_st.working_time wt
             join kabenyk_st.hospitals h
                 on wt.id_hospital = h.id_hospital
-        where v_id_hospital is null
-              or
-              (v_id_hospital is not null and
-              h.id_hospital = v_id_hospital)
+        where p_id_hospital is null
+              or (
+                  p_id_hospital is not null and
+                  h.id_hospital = p_id_hospital
+              )
         order by h.id_hospital, decode (wt.day, 'Понедельник', 1,
                                                 'Вторник',2,
                                                 'Среда', 3,
@@ -42,10 +41,9 @@ declare
         end_time varchar2(100)
     );
     v_record_1 record_1;
-
+    v_id_hospital number;
 begin
-    v_hospitals_working_time_cursor := kabenyk_st.hospitals_working_time_as_func();
-
+    v_hospitals_working_time_cursor := kabenyk_st.hospitals_working_time_as_func(p_id_hospital => v_id_hospital);
         loop
             fetch v_hospitals_working_time_cursor into v_record_1;
 

@@ -1,28 +1,25 @@
 -- Выдать все талоны конкретного врача, не показывать талоны, которые начались
 -- раньше текущего времени
 
-create or replace function
-    kabenyk_st.all_tickets_by_doctor_as_func
+create or replace function kabenyk_st.all_tickets_by_doctor_as_func (
+    p_id_doctor in number
+)
 return sys_refcursor
 as
     v_all_tickets_by_doctor_cursor sys_refcursor;
-    v_id_doctor number;
 begin
-    v_id_doctor := 8;
     open v_all_tickets_by_doctor_cursor for
         select
             d.surname,
             t.begin_time
-        from
-            kabenyk_st.doctors d
+        from kabenyk_st.doctors d
             join kabenyk_st.tickets t
                 on d.id_doctor = t.id_doctor
         where t.begin_time > sysdate
               and
-              (v_id_doctor is null
+              (p_id_doctor is null
               or
-              (v_id_doctor is not null and
-              d.id_doctor = v_id_doctor));
+              (p_id_doctor is not null and d.id_doctor = p_id_doctor));
     return v_all_tickets_by_doctor_cursor;
 end;
 
@@ -33,10 +30,12 @@ declare
         begin_time date
     );
     v_record_1 record_1;
+    v_id_doctor number := 8;
 begin
 
-    v_all_tickets_by_doctor_cursor := kabenyk_st.all_tickets_by_doctor_as_func();
-
+    v_all_tickets_by_doctor_cursor := kabenyk_st.all_tickets_by_doctor_as_func (
+        p_id_doctor => v_id_doctor
+    );
         loop
             fetch v_all_tickets_by_doctor_cursor into v_record_1;
 

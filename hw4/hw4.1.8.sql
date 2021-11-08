@@ -1,21 +1,19 @@
 -- 4.выдать журнал пациента
 
-create or replace function
-    kabenyk_st.patients_journal_by_patient_as_func
+create or replace function kabenyk_st.patients_journal_by_patient_as_func (
+    p_id_patient in number
+)
 return sys_refcursor
 as
     v_patients_journal_by_patient_cursor sys_refcursor;
-    v_id_patient number;
 begin
-    v_id_patient := 1;
     open v_patients_journal_by_patient_cursor for
         select
             p.surname,
             s.status,
             pj.day_time,
             d.surname
-        from
-            kabenyk_st.patients_journals pj
+        from kabenyk_st.patients_journals pj
             join kabenyk_st.patients p
                 on pj.id_patient = p.id_patient
             join kabenyk_st.journal_record_status s
@@ -24,10 +22,11 @@ begin
                 on pj.id_ticket = t.id_ticket
             join kabenyk_st.doctors d
                 on t.id_doctor = d.id_doctor
-            where v_id_patient is null
-                  or
-                  (v_id_patient is not null and
-                  pj.id_patient = v_id_patient);
+            where p_id_patient is null
+                  or (
+                      p_id_patient is not null and
+                      pj.id_patient = p_id_patient
+                  );
     return v_patients_journal_by_patient_cursor;
 end;
 
@@ -41,10 +40,11 @@ declare
         doctor varchar2(100)
     );
     v_record_1 record_1;
-
+    v_id_patient number;
 begin
-    v_patients_journal_by_patient_cursor := kabenyk_st.patients_journal_by_patient_as_func();
-
+    v_patients_journal_by_patient_cursor := kabenyk_st.patients_journal_by_patient_as_func (
+        p_id_patient => v_id_patient
+    );
         loop
             fetch v_patients_journal_by_patient_cursor into v_record_1;
 
