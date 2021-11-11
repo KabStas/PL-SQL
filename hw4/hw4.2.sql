@@ -331,9 +331,11 @@ end;
 declare
     v_id_patient number := 3;
     v_id_ticket number := 3;
-    v_id_specialization number := 3;
+    v_ticket kabenyk_st.tickets%rowtype;
     v_id_journal number;
 begin
+    v_ticket := kabenyk_st.get_ticket_by_id (p_id_ticket => v_id_ticket); --забираем талон, чтобы взять из него id_specialization
+
     if (
         not kabenyk_st.is_patient_already_recorded_as_func(
             p_id_patient => v_id_patient,
@@ -341,11 +343,11 @@ begin
         )
         and kabenyk_st.is_gender_matched_as_func(
             p_id_patient => v_id_patient,
-            p_id_specialization => v_id_specialization
+            p_id_specialization => v_ticket.id_specialization
         )
         and kabenyk_st.is_age_matched_as_func(
             p_id_patient => v_id_patient,
-            p_id_specialization => v_id_specialization
+            p_id_specialization => v_ticket.id_specialization
         )
         and kabenyk_st.is_ticket_open_as_func(
             p_id_ticket => v_id_ticket
@@ -357,7 +359,7 @@ begin
             p_id_ticket => v_id_ticket
         )
         and not kabenyk_st.is_specialization_marked_as_deleted_as_func(
-            p_id_specialization => v_id_specialization
+            p_id_specialization => v_ticket.id_specialization
         )
         and not kabenyk_st.is_hospital_marked_as_deleted_as_func(
             p_id_ticket => v_id_ticket
@@ -373,7 +375,7 @@ begin
             p_id_ticket => v_id_ticket,
             p_id_patient => v_id_patient
         );
-        kabenyk_st.outputting_result_as_procedure (
+        kabenyk_st.outputting_result_as_proc (
             p_id_journal => v_id_journal
         );
     else
