@@ -1,4 +1,4 @@
--- 2. выдать документы
+-- выдать документы
 
 create or replace function kabenyk_st.all_documents_by_patient_as_func (
     p_id_patient in number
