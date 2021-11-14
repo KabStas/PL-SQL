@@ -173,26 +173,26 @@ values ('открыт');
 insert into kabenyk_st.ticket_flags(flag)
 values ('закрыт');
 
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor_specialization)
 values (2, to_date('2021/08/30 08:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 08:45', 'yyyy/mm/dd hh24:mi'), 2);
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor_specialization)
 values (2, to_date('2021/08/30 08:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 08:45', 'yyyy/mm/dd hh24:mi'), 3);
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
-values (2, to_date('2021/08/30 08:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 08:45', 'yyyy/mm/dd hh24:mi'), 4);
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
-values (1, to_date('2021/08/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 09:45', 'yyyy/mm/dd hh24:mi'), 5);
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
-values (1, to_date('2021/08/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 09:45', 'yyyy/mm/dd hh24:mi'), 6);
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor_specialization)
+values (2, to_date('2021/08/30 08:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 08:45', 'yyyy/mm/dd hh24:mi'), 5);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor_specialization)
 values (1, to_date('2021/08/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 09:45', 'yyyy/mm/dd hh24:mi'), 7);
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
-values (1, to_date('2021/11/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 09:45', 'yyyy/mm/dd hh24:mi'), 8);
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
-values (1, to_date('2021/11/30 10:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 10:45', 'yyyy/mm/dd hh24:mi'), 8);
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
-values (1, to_date('2021/11/30 11:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 11:45', 'yyyy/mm/dd hh24:mi'), 6);
-insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor)
-values (1, to_date('2021/11/30 12:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 12:45', 'yyyy/mm/dd hh24:mi'), 7);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor_specialization)
+values (1, to_date('2021/08/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 09:45', 'yyyy/mm/dd hh24:mi'), 8);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor_specialization)
+values (1, to_date('2021/08/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/08/30 09:45', 'yyyy/mm/dd hh24:mi'), 9);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor_specialization)
+values (1, to_date('2021/11/30 09:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 09:45', 'yyyy/mm/dd hh24:mi'), 10);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor_specialization)
+values (1, to_date('2021/11/30 10:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 10:45', 'yyyy/mm/dd hh24:mi'), 10);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor_specialization)
+values (1, to_date('2021/11/30 11:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 11:45', 'yyyy/mm/dd hh24:mi'), 8);
+insert into kabenyk_st.tickets(id_ticket_flag, begin_time, end_time, id_doctor_specialization)
+values (1, to_date('2021/11/30 12:30', 'yyyy/mm/dd hh24:mi'), to_date('2021/11/30 12:45', 'yyyy/mm/dd hh24:mi'), 9);
 
 
 insert into kabenyk_st.accounts(name)
