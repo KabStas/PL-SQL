@@ -91,12 +91,12 @@ as
         where t.id_ticket = p_id_ticket;
 
         if v_deletion_date is not null then
-            raise kabenyk_st.pkg_error.e_doctor_deleted_exception;
+            raise kabenyk_st.pkg_errors.e_doctor_deleted_exception;
         end if;
 
         return false;
     exception
-        when kabenyk_st.pkg_error.e_doctor_deleted_exception then
+        when kabenyk_st.pkg_errors.e_doctor_deleted_exception then
             dbms_output.put_line ('Error. Doctor marked as deleted');
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),

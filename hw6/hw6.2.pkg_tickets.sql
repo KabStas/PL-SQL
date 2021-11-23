@@ -112,12 +112,12 @@ as
         where t.id_ticket = p_id_ticket;
 
         if v_ticket_flag != 1 then
-            raise kabenyk_st.pkg_error.e_ticket_not_open_exception;
+            raise kabenyk_st.pkg_errors.e_ticket_not_open_exception;
         end if;
 
         return true;
     exception
-        when kabenyk_st.pkg_error.e_ticket_not_open_exception then
+        when kabenyk_st.pkg_errors.e_ticket_not_open_exception then
             dbms_output.put_line ('Error. Ticket is not open');
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
@@ -141,12 +141,12 @@ as
         where t.id_ticket = p_id_ticket;
 
         if v_begin_time < sysdate then
-            raise kabenyk_st.pkg_error.e_ticket_time_exception;
+            raise kabenyk_st.pkg_errors.e_ticket_time_exception;
         end if;
 
         return true;
     exception
-        when kabenyk_st.pkg_error.e_ticket_time_exception then
+        when kabenyk_st.pkg_errors.e_ticket_time_exception then
             dbms_output.put_line ('Error. Time is not correct');
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),

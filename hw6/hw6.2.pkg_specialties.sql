@@ -104,12 +104,12 @@ as
             );
 
         if v_result = 0 then
-            raise kabenyk_st.pkg_error.e_patient_gender_exception;
+            raise kabenyk_st.pkg_errors.e_patient_gender_exception;
         end if;
 
         return true;
     exception
-        when kabenyk_st.pkg_error.e_patient_gender_exception then
+        when kabenyk_st.pkg_errors.e_patient_gender_exception then
             dbms_output.put_line ('Error. Gender not matched');
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
@@ -148,12 +148,12 @@ as
             and (s.max_age >= v_age or s.max_age is null);
 
         if v_result = 0 then
-            raise kabenyk_st.pkg_error.e_patient_age_exception;
+            raise kabenyk_st.pkg_errors.e_patient_age_exception;
         end if;
 
         return true;
     exception
-        when kabenyk_st.pkg_error.e_patient_age_exception then
+        when kabenyk_st.pkg_errors.e_patient_age_exception then
             dbms_output.put_line ('Error. Age not matched');
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
@@ -177,12 +177,12 @@ as
         where s.id_specialization = p_id_specialty;
 
         if v_deletion_date is not null then
-            raise kabenyk_st.pkg_error.e_specialty_deleted_exception;
+            raise kabenyk_st.pkg_errors.e_specialty_deleted_exception;
         end if;
 
         return false;
     exception
-        when kabenyk_st.pkg_error.e_specialty_deleted_exception then
+        when kabenyk_st.pkg_errors.e_specialty_deleted_exception then
             dbms_output.put_line ('Error. Specialty marked as deleted');
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),

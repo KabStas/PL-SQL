@@ -164,12 +164,12 @@ as
         where t.id_ticket = p_id_ticket;
 
         if v_deletion_date is not null then
-            raise kabenyk_st.pkg_error.e_hospital_deleted_exception;
+            raise kabenyk_st.pkg_errors.e_hospital_deleted_exception;
         end if;
 
         return false;
     exception
-        when kabenyk_st.pkg_error.e_hospital_deleted_exception then
+        when kabenyk_st.pkg_errors.e_hospital_deleted_exception then
             dbms_output.put_line ('Error. Hospital marked as deleted');
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
@@ -215,12 +215,12 @@ as
         v_hospital_end_time := to_number(v_hospital_end_time, '99.99');
 
         if (v_hospital_end_time - v_current_time) < 2 then
-            raise kabenyk_st.pkg_error.e_hospital_work_exception;
+            raise kabenyk_st.pkg_errors.e_hospital_work_exception;
         end if;
 
         return true;
     exception
-        when kabenyk_st.pkg_error.e_hospital_work_exception then
+        when kabenyk_st.pkg_errors.e_hospital_work_exception then
             dbms_output.put_line ('Error. Less 2 hours of hospital work');
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
