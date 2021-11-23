@@ -164,21 +164,10 @@ as
             and pj.id_journal_record_status in (1,2);
 
         if (v_result != 0) then
-            raise kabenyk_st.pkg_error.e_patient_recorded_exception;
+            raise kabenyk_st.pkg_errors.e_patient_recorded_exception;
         end if;
 
         return false;
-    exception
-        when kabenyk_st.pkg_error.e_patient_recorded_exception then
-            dbms_output.put_line ('Error. Patient is already recorded');
-            kabenyk_st.add_error_log(
-                $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
-                '{"error":"' || sqlerrm
-                ||'","value":"' || v_result
-                ||'","backtrace":"' || dbms_utility.format_error_backtrace()
-                ||'"}'
-            );
-        return true;
     end;
 
     function calc_age_from_date_of_birth (
@@ -224,12 +213,12 @@ as
         where p.id_patient = p_id_patient;
 
         if v_presence_of_oms != 4 then
-            raise kabenyk_st.pkg_error.e_patient_oms_exception;
+            raise kabenyk_st.pkg_errors.e_patient_oms_exception;
         end if;
 
         return true;
     exception
-        when kabenyk_st.pkg_error.e_patient_oms_exception then
+        when kabenyk_st.pkg_errors.e_patient_oms_exception then
             dbms_output.put_line ('Error. No OMS');
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
@@ -291,13 +280,13 @@ as
         where t.id_ticket = p_id_ticket;
 
         if v_begin_time < sysdate then
-            raise kabenyk_st.pkg_error.e_ticket_time_exception;
+            raise kabenyk_st.pkg_errors.e_ticket_time_exception;
 
         end if;
 
         return true;
     exception
-        when kabenyk_st.pkg_error.e_ticket_time_exception then
+        when kabenyk_st.pkg_errors.e_ticket_time_exception then
             dbms_output.put_line ('Error. Time is not correct');
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),

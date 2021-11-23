@@ -41,7 +41,7 @@ declare
         end_time varchar2(100)
     );
     v_record_1 record_1;
-    v_id_hospital number;
+    v_id_hospital number := 1;
 begin
     v_hospitals_working_time_cursor := kabenyk_st.hospitals_working_time_as_func(p_id_hospital => v_id_hospital);
         loop
