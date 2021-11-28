@@ -223,7 +223,7 @@ as
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
                 '{"error":"' || sqlerrm
-                ||'","value":"' || p_id_patient
+                ||'","id_patient":"' || p_id_patient
                 ||'","backtrace":"' || dbms_utility.format_error_backtrace()
                 ||'"}'
             );
@@ -281,7 +281,6 @@ as
 
         if v_begin_time < sysdate then
             raise kabenyk_st.pkg_errors.e_ticket_time_exception;
-
         end if;
 
         return true;
@@ -291,7 +290,8 @@ as
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
                 '{"error":"' || sqlerrm
-                ||'","value":"' || v_begin_time
+                ||'","id_ticket":"' || p_id_ticket
+                ||'","begin_time":"' || v_begin_time
                 ||'","backtrace":"' || dbms_utility.format_error_backtrace()
                 ||'"}'
             );
@@ -310,6 +310,4 @@ as
         commit;
     end;
 
-
 end pkg_patients;
-

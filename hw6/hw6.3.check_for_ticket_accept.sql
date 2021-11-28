@@ -1,5 +1,6 @@
     create or replace procedure check_for_ticket_accept_as_proc (
-        p_id_ticket in number, p_id_patient in number
+        p_id_ticket in number,
+        p_id_patient in number
     )
     as
         v_id_journal number;
@@ -62,7 +63,8 @@
                 kabenyk_st.add_error_log(
                     $$plsql_unit_owner||'.'||$$plsql_unit,
                     '{"error":"' || sqlerrm
-                    ||'","value":"' || p_id_patient
+                    ||'","id_ticket":"' || p_id_ticket
+                    ||'","id_patient":"' || p_id_patient
                     ||'","backtrace":"' || dbms_utility.format_error_backtrace()
                     ||'"}'
                 );

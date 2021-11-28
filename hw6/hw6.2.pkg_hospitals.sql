@@ -174,7 +174,8 @@ as
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
                 '{"error":"' || sqlerrm
-                ||'","value":"' || v_deletion_date
+                ||'","id_ticket":"' || p_id_ticket
+                ||'","deletion_date":"' || v_deletion_date
                 ||'","backtrace":"' || dbms_utility.format_error_backtrace()
                 ||'"}'
             );
@@ -225,7 +226,8 @@ as
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
                 '{"error":"' || sqlerrm
-                ||'","value":"' || v_hospital_end_time
+                ||'","id_ticket":"' || p_id_ticket
+                ||'","hospital_end_time":"' || v_hospital_end_time
                 ||'","backtrace":"' || dbms_utility.format_error_backtrace()
                 ||'"}'
             );

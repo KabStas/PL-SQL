@@ -93,7 +93,7 @@ as
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
                 '{"error":"' || sqlerrm
-                ||'","value":"' || p_id_ticket
+                ||'","id_ticket":"' || p_id_ticket
                 ||'","backtrace":"' || dbms_utility.format_error_backtrace()
                 ||'"}'
             );
@@ -122,7 +122,8 @@ as
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
                 '{"error":"' || sqlerrm
-                ||'","value":"' || v_ticket_flag
+                ||'","id_ticket":"' || p_id_ticket
+                ||'","ticket_flag":"' || v_ticket_flag
                 ||'","backtrace":"' || dbms_utility.format_error_backtrace()
                 ||'"}'
             );
@@ -151,7 +152,8 @@ as
             kabenyk_st.add_error_log(
                 $$plsql_unit_owner||'.'||$$plsql_unit||'.'||utl_call_stack.subprogram(1)(2),
                 '{"error":"' || sqlerrm
-                ||'","value":"' || v_begin_time
+                ||'","id_ticket":"' || p_id_ticket
+                ||'","begin_time":"' || v_begin_time
                 ||'","backtrace":"' || dbms_utility.format_error_backtrace()
                 ||'"}'
             );
