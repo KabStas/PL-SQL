@@ -86,7 +86,7 @@ as
     )
     return kabenyk_st.t_arr_journal
     as
-        v_arr_journal kabenyk_st.t_arr_journal;
+        v_arr_journal kabenyk_st.t_arr_journal := kabenyk_st.t_arr_journal();
     begin
         select kabenyk_st.t_journal (
             id_journal => pj.id_journal,

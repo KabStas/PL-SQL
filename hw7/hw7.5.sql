@@ -88,6 +88,7 @@ begin
         v_result_output := kabenyk_st.gathering_info_for_output_as_func (
             p_id_journal => v_id_journal
         );
+        commit;
 
     end if;
 
@@ -129,6 +130,7 @@ begin
         kabenyk_st.pkg_tickets.changing_ticket_flag_to_open_as_proc(
             p_id_ticket => p_id_ticket
         );
+        commit;
         v_result_output := kabenyk_st.gathering_info_for_output_as_func(
             p_id_journal => p_id_journal
         );
