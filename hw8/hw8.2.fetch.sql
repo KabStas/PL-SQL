@@ -294,4 +294,3 @@ exception
         out_success := false;
         return null;
 end;
-/

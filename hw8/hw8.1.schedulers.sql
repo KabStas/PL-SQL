@@ -71,7 +71,6 @@ begin
     );
 end;
 
-
 select * from user_scheduler_jobs;
 
 select * from user_scheduler_job_log;

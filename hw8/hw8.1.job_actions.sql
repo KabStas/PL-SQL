@@ -78,7 +78,6 @@ begin
 
 end;
 
-
 begin
     kabenyk_st.job_getting_doctors_data_action;
 end;

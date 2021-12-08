@@ -466,4 +466,3 @@ begin
 
     return v_return_clob;
 end;
-
