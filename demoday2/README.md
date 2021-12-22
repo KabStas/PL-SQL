@@ -13,7 +13,7 @@
     pkg_specialties.sql - пакет специальностей;
     pkg_tickets.sql - пакет талонов;
     pkg_utils.sql - пакет утилит;
-    resources.sql - ресурсы;
+    resources.sql - ресурсы для контроллеров;
     schedulers.sql - планировщик; 
     services.sql - сервисы;
     test_pkg_doctor.sql - тесты репозитория доктора;
